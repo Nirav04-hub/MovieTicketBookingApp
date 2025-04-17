@@ -6,34 +6,50 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+
   @override
   void initState() {
     super.initState();
-    // Simulate a loading time of 3 seconds before navigating
-    Timer(Duration(seconds: 3), () {
-      // TODO: Replace with the next screen later
+
+    //Rotation animation
+    controller = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    )..repeat();
+
+    Timer(Duration(seconds: 5), () {
+      // TODO: Replace with your next screen
       print("Navigate to next screen");
     });
   }
 
   @override
+  void dispose() {
+    controller.dispose(); // Cleanup
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Feel free to change
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // App Icon
-            Image.asset(
-              'assets/logo/logo.png',
-              width: 120,
-              height: 120,
-              fit: BoxFit.contain,
+            // Rotating Logo
+            RotationTransition(
+              turns: controller,
+              child: Image.asset(
+                'assets/logo/logo.png',
+                width: 120,
+                height: 120,
+              ),
             ),
             SizedBox(height: 30),
-            // App Title
             Text(
               'CineTime',
               style: TextStyle(
