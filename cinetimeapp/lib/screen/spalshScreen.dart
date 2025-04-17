@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:cinetimeapp/screen/signInScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -21,8 +22,11 @@ class _SplashScreenState extends State<SplashScreen>
     )..repeat();
 
     Timer(Duration(seconds: 5), () {
-      // TODO: Replace with your next screen
-      print("Navigate to next screen");
+      controller.stop();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => signinscreen()),
+      );
     });
   }
 
