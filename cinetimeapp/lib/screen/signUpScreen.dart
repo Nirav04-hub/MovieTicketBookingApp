@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cinetimeapp/screen/signInScreen.dart';
+import 'package:cinetimeapp/screen/movieListScreen.dart';
 
 class signUpScreen extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _signUpScreenState extends State<signUpScreen> {
       );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => signinscreen()),
+        MaterialPageRoute(builder: (_) => MovieListScreen()),
       );
     }
   }

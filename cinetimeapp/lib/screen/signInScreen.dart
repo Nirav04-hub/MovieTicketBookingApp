@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cinetimeapp/screen/signUpScreen.dart';
+import 'package:cinetimeapp/screen/movieListScreen.dart';
 
 class signinscreen extends StatefulWidget {
   @override
@@ -24,7 +25,10 @@ class _SignInScreenState extends State<signinscreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Login successful!")),
       );
-      // TODO: Navigate to Home or Dashboard
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => MovieListScreen()),
+      );
     } else {
       // Show error
       ScaffoldMessenger.of(context).showSnackBar(
