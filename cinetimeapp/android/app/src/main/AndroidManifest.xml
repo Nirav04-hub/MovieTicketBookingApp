@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
       <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBnGAJsV_RlMgyod0Ngfse9REq4SNbfBdc"/>
+        android:value="YOUR_API_KEY"/>
  
     <application
         android:label="cinetimeapp"
