@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cinetimeapp/widgets/appDrawer.dart';
+import 'package:cinetimeapp/screen/ticketBookingScreen.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Map<String, String> movie;
@@ -12,7 +13,7 @@ class MovieDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Movie Details"),
         titleTextStyle: TextStyle(fontWeight: FontWeight.bold),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: const Color.fromARGB(255, 247, 170, 170),
       ),
       drawer: AppDrawer(),
       drawerScrimColor: Colors.black.withOpacity(0.4),
@@ -71,7 +72,10 @@ class MovieDetailScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Navigate to Reservation Screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => TicketBookingScreen()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
