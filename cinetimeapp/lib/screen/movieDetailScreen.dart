@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cinetimeapp/widgets/appDrawer.dart';
-import 'package:cinetimeapp/screen/ticketBookingScreen.dart';
+import 'package:cinetimeapp/screen/ticket_booking_screen.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Map<String, String> movie;

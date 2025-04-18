@@ -3,14 +3,17 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cinetimeapp/widgets/appDrawer.dart';
 
 class TicketBookingScreen extends StatefulWidget {
+  const TicketBookingScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _TicketBookingScreenState createState() => _TicketBookingScreenState();
 }
 
 class _TicketBookingScreenState extends State<TicketBookingScreen> {
-  TextEditingController _cityController =
+  final TextEditingController _cityController =
       TextEditingController(text: "Waterloo");
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   GoogleMapController? _mapController;
 
   final LatLng _defaultCenter = LatLng(43.4643, -80.5204); // Waterloo
@@ -83,6 +86,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
         backgroundColor: Colors.redAccent,
       ),
       drawer: AppDrawer(),
+      // ignore: deprecated_member_use
       drawerScrimColor: Colors.black.withOpacity(0.4),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(12),
