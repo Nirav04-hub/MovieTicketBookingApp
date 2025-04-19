@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cinetimeapp/screen/movieListScreen.dart'; // add other screens when created
+import 'package:cinetimeapp/screen/movieListScreen.dart';
+import 'package:cinetimeapp/screen/ticketlistScreen.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -46,7 +47,10 @@ class AppDrawer extends StatelessWidget {
             icon: Icons.confirmation_number,
             label: "My Tickets",
             onTap: () {
-              Navigator.pop(context); // Add navigation later
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const MyTicketsScreen()),
+              );
             },
           ),
           DrawerTile(

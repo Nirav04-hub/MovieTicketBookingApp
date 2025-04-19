@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cinetimeapp/models/booking.dart';
 import 'package:cinetimeapp/services/booking_dbhelper.dart';
 import 'package:cinetimeapp/widgets/appDrawer.dart';
+import 'package:cinetimeapp/screen/paymentScreen.dart';
 
 class BookingScreen extends StatefulWidget {
   @override
@@ -33,12 +34,16 @@ class _BookingScreenState extends State<BookingScreen> {
       );
 
       await BookingDatabase.insertBooking(booking);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Booking confirmed!")),
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => PaymentScreen(
+            name: _nameController.text,
+            email: _emailController.text,
+            tickets: int.parse(_ticketsController.text),
+          ),
+        ),
       );
-
-      _formKey.currentState!.reset();
     }
   }
 

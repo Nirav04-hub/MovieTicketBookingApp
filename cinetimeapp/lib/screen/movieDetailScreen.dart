@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:cinetimeapp/widgets/appDrawer.dart';
-import 'package:cinetimeapp/screen/ticket_booking_screen.dart';
+import 'ticket_booking_screen.dart'; // 👈 make sure this import is correct
 
 class MovieDetailScreen extends StatelessWidget {
   final Map<String, String> movie;
 
-  const MovieDetailScreen({required this.movie});
+  const MovieDetailScreen({required this.movie, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: AppDrawer(),
       appBar: AppBar(
         title: Text("Movie Details"),
-        titleTextStyle: TextStyle(fontWeight: FontWeight.bold),
-        backgroundColor: const Color.fromARGB(255, 247, 170, 170),
+        backgroundColor: Colors.redAccent,
       ),
-      drawer: AppDrawer(),
       drawerScrimColor: Colors.black.withOpacity(0.4),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             // Movie Poster
@@ -26,19 +25,20 @@ class MovieDetailScreen extends StatelessWidget {
               movie['image'] ?? '',
               height: 300,
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Icon(Icons.broken_image, size: 100),
+              errorBuilder: (_, __, ___) =>
+                  const Icon(Icons.broken_image, size: 100),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Movie Title
             Text(
               movie['title'] ?? 'No Title',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
-            // Metadata Row
+            // Placeholder Info
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -47,15 +47,15 @@ class MovieDetailScreen extends StatelessWidget {
                 _buildInfoBox("Genre", "Action, Thriller"),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Overview
             Text(
               movie['overview'] ?? 'No description available.',
               textAlign: TextAlign.justify,
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Buttons
             Row(
@@ -65,22 +65,20 @@ class MovieDetailScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[700],
-                  ),
-                  child: Text("Back To Movies"),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                  child: const Text("Back To Movies"),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => TicketBookingScreen()),
+                      MaterialPageRoute(
+                          builder: (_) => const TicketBookingScreen()),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                  ),
-                  child: Text("Reserve Now"),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                  child: const Text("Reserve Now"),
                 ),
               ],
             )
@@ -93,10 +91,10 @@ class MovieDetailScreen extends StatelessWidget {
   Widget _buildInfoBox(String label, String value) {
     return Column(
       children: [
-        Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
-        SizedBox(height: 4),
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 4),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black26),
             borderRadius: BorderRadius.circular(6),

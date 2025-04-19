@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cinetimeapp/widgets/appDrawer.dart';
+import 'package:cinetimeapp/screen/bookingscreen.dart';
 
 class TicketBookingScreen extends StatefulWidget {
   const TicketBookingScreen({super.key});
@@ -65,8 +66,11 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
               return ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Reserved for $time at $theater")),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => BookingScreen(),
+                    ),
                   );
                 },
                 child: Text(time),
